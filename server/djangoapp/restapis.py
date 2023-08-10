@@ -30,5 +30,17 @@ from requests.auth import HTTPBasicAuth
 # - Call get_request() with specified arguments
 # - Get the returned sentiment label such as Positive or Negative
 
+'''
+9. Now, open the restapis.py file, and in the get_dealers_from_cf function, replace the line:
 
+# Get its content in doc object
+
+dealer_doc = dealer["doc"]
+
+with the new line:
+
+dealer_doc = dealer
+
+This will update the way the dealer_doc variable retrieves the content from the dealer object.
+'''
 
