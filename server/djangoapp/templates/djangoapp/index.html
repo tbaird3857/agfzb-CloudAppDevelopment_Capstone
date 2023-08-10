@@ -1,6 +1,39 @@
 {% extends 'static_template.html' %}
 
 {% block content %}
-    <h1>Welcome to the Index Page</h1>
+    <h1>Welcome to the Car Dealer Reviews Page!</h1>
     <!-- Add the content specific to the index page here -->
+    <div class="container mt-5">
+        <h1>Dealerships</h1>
+        <table class="table" id="table" data-filter-control="true">
+            <thead>
+                <tr>
+                    <th data-field="id">ID</th>
+                    <th data-field="name">Dealer Name</th>
+                    <th data-field="city">City</th>
+                    <th data-field="address">Address</th>
+                    <th data-field="zip">Zip</th>
+                    <th data-field="state" data-filter-control="select">State</th>
+                </tr>
+            </thead>
+            <tbody>           
+                {% for dealer in dealership_list %}
+                    <tr>
+                        <td>{{ dealer.id }}</td>
+                        <td><a href="{% url 'djangoapp:dealer_details' dealer.id %}">{{ dealer.full_name }}</a></td>
+                        <td>{{ dealer.city }}</td>
+                        <td>{{ dealer.address }}</td>
+                        <td>{{ dealer.zip }}</td>
+                        <td>{{ dealer.state }} </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#table').bootstrapTable();
+        });
+    </script>
 {% endblock %}
